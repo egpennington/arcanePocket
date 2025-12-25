@@ -26,23 +26,30 @@ export const HauntedGallery: React.FC = () => {
 
   useEffect(() => {
     initGrid();
-    // Speak initial instruction
+    
     const startSpeech = async () => {
       setIsSpeaking(true);
-      await speak("Look at the symbols in the gallery. Choose one and fix your gaze upon it. Let the image burn into your mind.");
+      await speak("Gaze into the gallery. Choose a symbol and lock its image in your mind.");
       setIsSpeaking(false);
     };
     startSpeech();
   }, []);
 
   const handleNext = async () => {
+    // Force skip if stuck on mobile
+    if (isSpeaking) {
+      window.speechSynthesis.cancel();
+      setIsSpeaking(false);
+      return;
+    }
+    
     const nextStep = step + 1;
     setIsSpeaking(true);
     let nextInstruction = "";
 
     switch (nextStep) {
       case 1:
-        nextInstruction = "Slide your mind to the nearest corner. Whether fate moves you to a new image or keeps you anchored, this symbol is now your true destiny. Lock it in.";
+        nextInstruction = "Now slide your mind to the nearest corner. Whether fate moves you to a new image or keeps you anchored, this symbol is now your true destiny. Lock it in.";
         break;
       case 2:
         nextInstruction = "The White Roads are appearing. In your mind, move exactly 3 times along these glowing paths. Up, down, left, or right. Never diagonally.";
@@ -119,8 +126,14 @@ export const HauntedGallery: React.FC = () => {
           </defs>
           
           <g stroke="white" strokeWidth="0.8" strokeLinecap="round" filter="url(#roadGlow)" className="transition-opacity duration-1000">
+            {/* Grid Mesh */}
+            <line x1="18" y1="18" x2="82" y2="18" strokeDasharray="1, 3" className={`transition-opacity duration-700 ${step >= 3 ? 'opacity-0' : 'opacity-30'}`} />
             <line x1="18" y1="50" x2="82" y2="50" strokeDasharray="1, 3" className={`transition-opacity duration-700 ${step >= 3 ? 'opacity-100' : 'opacity-30'}`} />
+            <line x1="18" y1="82" x2="82" y2="82" strokeDasharray="1, 3" className={`transition-opacity duration-700 ${step >= 3 ? 'opacity-0' : 'opacity-30'}`} />
+            
+            <line x1="18" y1="18" x2="18" y2="82" strokeDasharray="1, 3" className={`transition-opacity duration-700 ${step >= 3 ? 'opacity-0' : 'opacity-30'}`} />
             <line x1="50" y1="18" x2="50" y2="82" strokeDasharray="1, 3" className={`transition-opacity duration-700 ${step >= 3 ? 'opacity-100' : 'opacity-30'}`} />
+            <line x1="82" y1="18" x2="82" y2="82" strokeDasharray="1, 3" className={`transition-opacity duration-700 ${step >= 3 ? 'opacity-0' : 'opacity-30'}`} />
           </g>
 
           <g stroke="rgba(255,255,255,0.8)" strokeWidth="1.2" filter="url(#roadGlow)" className="animate-pulse">
@@ -155,13 +168,13 @@ export const HauntedGallery: React.FC = () => {
       <div className="w-full mt-6">
         {step < 5 ? (
           <button
-            disabled={isSpeaking}
+            
             onClick={handleNext}
-            className="group w-full py-5 bg-indigo-600 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 hover:bg-indigo-500 transition-all shadow-lg shadow-indigo-900/40 active:scale-95 border-b-4 border-indigo-800 disabled:opacity-50 disabled:grayscale"
+             className="group w-full py-5 bg-indigo-600 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 hover:bg-indigo-500 transition-all shadow-lg shadow-indigo-900/40 active:scale-95 border-b-4 border-indigo-800"
           >
             {isSpeaking ? (
               <span className="flex items-center gap-2">
-                <span className="animate-pulse">The Oracle is Speaking...</span>
+                <span className="animate-pulse">Tap to Skip Voice</span>
               </span>
             ) : (
               <>

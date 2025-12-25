@@ -1,7 +1,7 @@
 
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import { speak, getThoughtLockRevelation } from '../../services/geminiService';
-import { Lock, Unlock, Sparkles, RefreshCw, Key, Watch, Book, Glasses, Circle, Wallet, Smartphone, PenTool, Map as MapIcon, Compass, Anchor, Moon, Sun, SquareUserRound, Gem, Flame } from 'lucide-react';
+import { Lock, Unlock, Sparkles, RefreshCw, Key, Watch, Circle, Smartphone, PenTool, Map as MapIcon, Compass, Anchor, Moon, Sun, SquareUserRound, Gem, Flame } from 'lucide-react';
 
 const QUESTIONS = [
   "Is your object more functional and useful than it is sentimental?",
@@ -61,11 +61,21 @@ export const ThoughtLock: React.FC = () => {
 
   useEffect(() => {
     if (step === 0) {
-      speak("Behold the gallery of shadows. Choose one to lock in your mind. Do not speak its name.  Simply picture its weight, its history, and its secret purpose. Let me know when your choice is made.");
+      const initialSpeech = async () => {
+        setIsSpeaking(true);
+        await speak("Behold the gallery of shadows. Choose one to lock in your mind. Do not speak its name.  Simply picture its weight, its history, and its secret purpose. Let me know when your choice is made.");
+        setIsSpeaking(false);
+      };
+      initialSpeech();
     }
   }, [step]);
 
   const startRitual = async () => {
+    if (isSpeaking) {
+      window.speechSynthesis.cancel();
+      setIsSpeaking(false);
+    }
+
     setIsSpeaking(true);
     setStep(1);
     await speak(QUESTIONS[0]);
@@ -73,6 +83,11 @@ export const ThoughtLock: React.FC = () => {
   };
 
   const handleAnswer = async (val: number) => {
+     if (isSpeaking) {
+      window.speechSynthesis.cancel();
+      setIsSpeaking(false);
+    }
+
     const newAnswers = [...answers, val];
     setAnswers(newAnswers);
     setIsSpeaking(true);
@@ -141,7 +156,7 @@ export const ThoughtLock: React.FC = () => {
               onClick={startRitual}
               className="w-full py-6 bg-gradient-to-r from-indigo-700 to-purple-800 rounded-2xl font-bold text-xl shadow-xl hover:scale-[1.02] transition-transform border-b-4 border-indigo-900"
             >
-              I Have My Thought
+              {isSpeaking ? "Tap to Skip Voice" : "I Have My Thought"}
             </button>
           </div>
         ) : step <= 3 ? (
@@ -153,18 +168,18 @@ export const ThoughtLock: React.FC = () => {
 
             <div className="grid grid-cols-2 gap-4">
               <button
-                disabled={isSpeaking}
+                
                 onClick={() => handleAnswer(1)}
-                className="py-6 bg-indigo-950/50 border border-indigo-500/30 rounded-2xl font-bold text-xl hover:bg-indigo-600 transition-all disabled:opacity-30 shadow-lg active:scale-95"
+                 className="py-6 bg-indigo-950/50 border border-indigo-500/30 rounded-2xl font-bold text-xl hover:bg-indigo-600 transition-all shadow-lg active:scale-95"
               >
-                Yes
+                {isSpeaking ? "Skip & Yes" : "Yes"}
               </button>
               <button
-                disabled={isSpeaking}
+                
                 onClick={() => handleAnswer(0)}
-                className="py-6 bg-indigo-950/50 border border-indigo-500/30 rounded-2xl font-bold text-xl hover:bg-indigo-600 transition-all disabled:opacity-30 shadow-lg active:scale-95"
+                className="py-6 bg-indigo-950/50 border border-indigo-500/30 rounded-2xl font-bold text-xl hover:bg-indigo-600 transition-all shadow-lg active:scale-95"
               >
-                No
+                {isSpeaking ? "Skip & No" : "No"}
               </button>
             </div>
 
@@ -197,6 +212,7 @@ export const ThoughtLock: React.FC = () => {
               <div className="flex flex-col items-center gap-6 py-12">
                  <div className="w-16 h-16 border-4 border-t-yellow-500 border-indigo-900 rounded-full animate-spin"></div>
                  <p className="text-indigo-300 animate-pulse tracking-[0.4em] uppercase text-[10px] font-bold">Parsing Cognitive Echoes...</p>
+                 <button onClick={() => setIsSpeaking(false)} className="text-xs text-gray-600 underline">Still loading? Tap here.</button>
               </div>
             )}
           </div>
