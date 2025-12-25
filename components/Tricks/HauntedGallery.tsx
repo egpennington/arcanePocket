@@ -42,7 +42,7 @@ export const HauntedGallery: React.FC = () => {
       setIsSpeaking(false);
       return;
     }
-    
+
     const nextStep = step + 1;
     setIsSpeaking(true);
     let nextInstruction = "";
@@ -59,7 +59,7 @@ export const HauntedGallery: React.FC = () => {
         nextInstruction = "The corner rooms have collapsed into shadow. Only the inner corridors remain. Move exactly 2 more times through the pathways.";
         break;
       case 4:
-        nextInstruction = "The air grows cold as the spirits narrow the search. Move one final time to a symbol directly adjacent to your current position.";
+        nextInstruction = "The air grows cold as the spirits narrow the search. Move one final time to a symbol directly adjacent to your current position. Find your true destiny.";
         break;
       case 5:
         setEliminated([0, 1, 2, 3, 5, 6, 7, 8]);
