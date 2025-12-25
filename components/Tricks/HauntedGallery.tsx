@@ -42,7 +42,7 @@ export const HauntedGallery: React.FC = () => {
 
     switch (nextStep) {
       case 1:
-        nextInstruction = "let your consciousness drift to the nearest corner of the gallery. If you find yourself arriving at a new symbol, do not resist—this is your true destiny, this symbol is now the only one that exists for you. If you were already at a corner, your spirit was already anchored. Remember that symbol.";
+        nextInstruction = "Slide your mind to the nearest corner. Whether fate moves you to a new image or keeps you anchored, this symbol is now your true destiny. Lock it in.";
         break;
       case 2:
         nextInstruction = "The White Roads are appearing. In your mind, move exactly 3 times along these glowing paths. Up, down, left, or right. Never diagonally.";
