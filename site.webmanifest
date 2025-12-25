@@ -1,11 +1,15 @@
 {
+  "id": "/",
   "name": "Arcane Pocket: The Digital Grimoire of Wonders",
   "short_name": "Arcane Pocket",
+  "lang": "en",
+  "description": "A pocket grimoire of impossible demonstrations — predictions, transformations, and wonders that unfold in your hands.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#ffffff",
+  "orientation": "portrait",
+  "background_color": "#0b0c10",
+  "theme_color": "#0b0c10",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
@@ -21,7 +25,8 @@
       "src": "/icons/icon512-maskable.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "maskable"
+      "purpose": "any maskable"
     }
-  ]
+  ],
+  "categories": ["entertainment", "magic", "games", "utilities"]
 }
