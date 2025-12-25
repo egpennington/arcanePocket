@@ -29,7 +29,7 @@ export const HauntedGallery: React.FC = () => {
     // Speak initial instruction
     const startSpeech = async () => {
       setIsSpeaking(true);
-      await speak("Look at the symbols in the gallery. Do not touch the screen. Simply choose one and fix your gaze upon it. Let the image burn into your mind.");
+      await speak("Look at the symbols in the gallery. Choose one and fix your gaze upon it. Let the image burn into your mind.");
       setIsSpeaking(false);
     };
     startSpeech();
@@ -42,7 +42,7 @@ export const HauntedGallery: React.FC = () => {
 
     switch (nextStep) {
       case 1:
-        nextInstruction = "Now, imagine your consciousness sliding to the nearest corner of the gallery. If your thought is already at a corner, remain there.";
+        nextInstruction = "Now let your consciousness drift to the nearest corner of the gallery. If you find yourself arriving at a new symbol, do not resist—this is your true destiny manifesting. Forget your first thought; this symbol is now the only one that exists. If you were already at a corner, your spirit was already anchored. Remember that symbol.";
         break;
       case 2:
         nextInstruction = "The White Roads are appearing. In your mind, move exactly 3 times along these glowing paths. Up, down, left, or right. Never diagonally.";

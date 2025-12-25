@@ -45,16 +45,28 @@ export const getFreeWillPrediction = async (positions: { hand: string | null; po
 
 /**
  * Performs Text-to-Speech using the browser's native SpeechSynthesis API.
+ * Optimized for mobile
  */
 export const speak = (text: string): Promise<void> => {
   return new Promise((resolve) => {
+
+    // 1. Safety Timeout: If the voice hangs for > 12s, resolve anyway to unlock the UI.
+    const safetyTimer = setTimeout(() => {
+      console.warn("Speech synthesis safety timeout reached.");
+      window.speechSynthesis.cancel();
+      resolve();
+    }, 12000);
+
     window.speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(text);
     const voices = window.speechSynthesis.getVoices();
+
+    // Try to find a premium/natural sounding voice
     const preferredVoice = voices.find(v => 
       v.name.includes('Google UK English Male') || 
       v.name.includes('Daniel') ||
-      v.name.includes('Arthur')
+      v.name.includes('Arthur') ||
+      v.lang === 'en-GB'
     );
     
     if (preferredVoice) utterance.voice = preferredVoice;
@@ -62,17 +74,26 @@ export const speak = (text: string): Promise<void> => {
     utterance.rate = 0.95;
     utterance.volume = 1;
 
-    utterance.onend = () => resolve();
-    utterance.onerror = () => resolve();
+    utterance.onend = () => {
+      clearTimeout(safetyTimer);
+      resolve();
+    };
+
+    utterance.onerror = () => {
+      clearTimeout(safetyTimer);
+      resolve();
+    };
+
     window.speechSynthesis.speak(utterance);
-    
+
+     // 2. Mobile "Heartbeat": iOS/Android often pause speech after 5-10 seconds of no interaction.
+    // We pulse the resume command to keep the audio channel open.    
     const interval = setInterval(() => {
       if (!window.speechSynthesis.speaking) {
         clearInterval(interval);
       } else {
-        window.speechSynthesis.pause();
         window.speechSynthesis.resume();
       }
-    }, 10000);
+    }, 2000);
   });
 };

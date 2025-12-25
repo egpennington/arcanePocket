@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
 import { speak, getThoughtLockRevelation } from '../../services/geminiService';
-import { Lock, Unlock, Sparkles, RefreshCw, Key, Watch, Book, Glasses, Circle, Wallet, Smartphone, PenTool, Map as MapIcon, Compass, Anchor, Moon, Sun, Ghost, Gem, Flame } from 'lucide-react';
+import { Lock, Unlock, Sparkles, RefreshCw, Key, Watch, Book, Glasses, Circle, Wallet, Smartphone, PenTool, Map as MapIcon, Compass, Anchor, Moon, Sun, SquareUserRound, Gem, Flame } from 'lucide-react';
 
 const QUESTIONS = [
   "Is your object more functional and useful than it is sentimental?",
@@ -17,7 +17,7 @@ interface MagicItem {
 const ITEM_POOLS: MagicItem[][] = [
   // Pool 1: The Modern Pocket
   [
-    { name: 'Photo', icon: <Ghost size={32} /> },      // 00X (Sentimental, Not Close)
+    { name: 'Photo', icon: <SquareUserRound size={32} /> },      // 00X (Sentimental, Not Close)
     { name: 'Ring', icon: <Circle size={32} /> },     // 01X (Sentimental, Close)
     { name: 'Pen', icon: <PenTool size={32} /> },      // 100 (Useful, Not Close, Not Noticeable)
     { name: 'Phone', icon: <Smartphone size={32} /> }, // 101 (Useful, Not Close, Noticeable)
@@ -39,7 +39,7 @@ const ITEM_POOLS: MagicItem[][] = [
     { name: 'Amulet', icon: <Gem size={32} /> },       // 01X
     { name: 'Sealing Wax', icon: <Flame size={32} /> },// 100
     { name: 'Crystal', icon: <Sparkles size={32} /> }, // 101
-    { name: 'Tarot Card', icon: <Ghost size={32} /> }, // 110
+    { name: 'Tarot Card', icon: <SquareUserRound size={32} /> }, // 110
     { name: 'Ritual Dagger', icon: <PenTool size={32} /> } // 111
   ]
 ];
@@ -61,7 +61,7 @@ export const ThoughtLock: React.FC = () => {
 
   useEffect(() => {
     if (step === 0) {
-      speak("Look at the artifacts before you. Choose one to lock in your mind. Do not tap it. Simply picture its weight, its history, and its secret purpose. Let me know when your choice is made.");
+      speak("Behold the gallery of shadows. Choose one to lock in your mind. Do not speak its name.  Simply picture its weight, its history, and its secret purpose. Let me know when your choice is made.");
     }
   }, [step]);
 
@@ -95,7 +95,7 @@ export const ThoughtLock: React.FC = () => {
 
       const targetItem = currentPool[targetIndex].name;
       
-      await speak("The lock is turning... I can see the neural pathways lighting up. Keep your focus pure.");
+      await speak("The echoes of your choice are vibrating through the Void... I see the spectral patterns of your destiny forming. Hold that image in your mind. Keep your focus pure.");
       const result = await getThoughtLockRevelation(targetItem);
       setRevelation(result);
       await speak(result);

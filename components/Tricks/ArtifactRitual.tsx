@@ -18,6 +18,14 @@ export const ArtifactRitual: React.FC = () => {
   };
 
   const nextStep = async () => {
+    // If we're already "speaking" but user taps again, they are likely stuck on mobile.
+    // We cancel speech and force proceed.
+    if (isSpeaking) {
+      window.speechSynthesis.cancel();
+      setIsSpeaking(false);
+      return; 
+    }
+
     setIsSpeaking(true);
     const nextS = step + 1;
     setStep(nextS);
@@ -42,14 +50,14 @@ export const ArtifactRitual: React.FC = () => {
         await speak("Pick up the final item. This is the witness. Place it on the table in front of you.");
         break;
       case 8:
-        // Use Gemini for the mystical text revelation
+        
         const res = await getFreeWillPrediction({
           hand: "the pen on the table",
           pocket: "the key in your left pocket",
           table: "the coin in your right pocket"
         });
         setPrediction(res);
-        // Vocal revelation using the specific requested phrasing
+        
         await speak("I sense the threads of destiny. The pen is on the table so you can write about the magic... with the key in the left pocket and wealth in the right one. Exactly as was written by the hands of fate.");
         break;
     }
@@ -111,8 +119,7 @@ export const ArtifactRitual: React.FC = () => {
             {step < 8 ? (
               <button
                 onClick={nextStep}
-                disabled={isSpeaking}
-                className="group w-full py-5 bg-indigo-600 rounded-2xl font-bold text-lg disabled:opacity-30 disabled:grayscale transition-all flex items-center justify-center gap-3 border-b-4 border-indigo-800 shadow-xl"
+                className="group w-full py-5 bg-indigo-600 rounded-2xl font-bold text-lg transition-all flex items-center justify-center gap-3 border-b-4 border-indigo-800 shadow-xl"
               >
                 {isSpeaking ? (
                    <>
@@ -121,7 +128,7 @@ export const ArtifactRitual: React.FC = () => {
                        <div className="w-1 h-4 bg-white/50 animate-bounce [animation-delay:0.2s]"></div>
                        <div className="w-1 h-4 bg-white/50 animate-bounce [animation-delay:0.4s]"></div>
                      </div>
-                     Listening...
+                     Tap to Skip Voice
                    </>
                 ) : (
                   <>
