@@ -5,7 +5,8 @@ import { HauntedGallery } from './components/Tricks/HauntedGallery';
 import { ArtifactRitual } from './components/Tricks/ArtifactRitual';
 import { ThoughtLock } from './components/Tricks/ThoughtLock';
 import { SelfWorkingCard } from './components/Tricks/SelfWorkingCard';
-import { Sparkles, Brain, LayoutGrid, ScrollText, ArrowLeft, Lock } from 'lucide-react';
+import { ChaosProtocol } from './components/Tricks/ChaosProtocol';
+import { Sparkles, Brain, LayoutGrid, ScrollText, ArrowLeft, Lock, Zap } from 'lucide-react';
 
 const TRICKS: Trick[] = [
   {
@@ -21,6 +22,13 @@ const TRICKS: Trick[] = [
     description: "A mental lock that only the oracle can open.",
     icon: "Lock",
     category: "Mentalism"
+  },
+  {
+    id: TrickType.CHAOS_PROTOCOL,
+    title: "The Chaos Protocol",
+    description: "A self-working miracle where order is born from total entropy.",
+    icon: "Zap",
+    category: "Physical"
   },
   {
     id: TrickType.ARTIFACTS,
@@ -47,6 +55,7 @@ const App: React.FC = () => {
       case TrickType.ARTIFACTS: return <ArtifactRitual />;
       case TrickType.THOUGHT_LOCK: return <ThoughtLock />;
       case TrickType.CARD_MASTER: return <SelfWorkingCard />;
+      case TrickType.CHAOS_PROTOCOL: return <ChaosProtocol />;
       default: return null;
     }
   };
@@ -57,6 +66,7 @@ const App: React.FC = () => {
       case "Lock": return <Lock className="w-8 h-8 text-yellow-400" />;
       case "Brain": return <Brain className="w-8 h-8 text-pink-400" />;
       case "ScrollText": return <ScrollText className="w-8 h-8 text-amber-400" />;
+      case "Zap": return <Zap className="w-8 h-8 text-yellow-500" />;
       default: return null;
     }
   };
