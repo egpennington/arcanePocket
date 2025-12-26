@@ -14,7 +14,7 @@ const STEPS = [
   },
   {
     title: "The Inversion",
-    instruction: "Take your 4 Aces and lose them—face up—into the 16 face-down cards. You now have a small stack where the Aces are glowing face-up, while the others face the shadows, face down.",
+    instruction: "Take your 4 Aces and lose them—face up—into the 16 face-down cards. You now have the glowing face-up, while the others face the shadows, face down.",
   },
   {
     title: "Mixing the Chaos",
@@ -30,15 +30,15 @@ const STEPS = [
   },
   {
     title: "The Bridge of Shadows",
-    instruction: "We shall interlace the cards. Take the top card from the left pile and place it in the center. Then take the top card from the right and place it on top of that. Alternate until all 20 cards form a single stack.",
+    instruction: "Now interlace the cards. Take the top card from either pile and place it in the center. Then take the top card from the other pile and place it on top of that. Alternate until all cards are in a single stack.",
   },
   {
     title: "The Simple Sever",
-    instruction: "The universe demands a cut. Take any amount from the top, place it on the table, and complete the cut with the remaining cards. Order is moving under the surface.",
+    instruction: "The universe demands it's cut. Cut any amount from the top, place it on the table, and complete the cut with the remaining cards. Order is moving under the surface.",
   },
   {
     title: "The Four Quartets",
-    instruction: "Deal the cards into 4 separate piles, one at a time, as if dealing a game of cards. One, two, three, four... until all 20 cards are distributed. Each pile now holds 5 cards.",
+    instruction: "Deal the cards into 4 separate piles, one at a time, as if dealing a game of cards until all 20 cards are distributed. Each pile now holds 5 cards.",
   },
   {
     title: "The Binary Choice",
@@ -46,7 +46,7 @@ const STEPS = [
   },
   {
     title: "The First Convergence",
-    instruction: "If you chose Odd, stack piles 1 and 3 together. If you chose Even, stack 2 and 4. Take the remaining two piles and stack them separately. You now have two piles of 10.",
+    instruction: "If you chose Odd, stack piles 1 and 3 together. If you chose Even, stack 2 and 4. Stack the remaining two piles and separately. Should have 2 piles of 10 cards each.",
   },
   {
     title: "The Final Inversion",
@@ -58,7 +58,7 @@ const STEPS = [
   },
   {
     title: "The Revelation",
-    instruction: "Close your eyes. Say 'Catawampus' and wave your hand. Spread the cards slowly across the table. You will see every card faces the shadows, except the four Aces, which alone face the light.",
+    instruction: "Close your eyes. Say 'Catawampus' and wave your hand. Spread the cards slowly across the table. Every card faces the shadows, except the four Aces, which alone face the light.",
   }
 ];
 
