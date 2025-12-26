@@ -5,16 +5,20 @@ import { speak } from '../../services/geminiService';
 
 const STEPS = [
   {
-    title: "Gathering the Elements",
-    instruction: "Grab a physical deck of cards. Take out the four Aces and lay them face up on the table. Shuffle the remaining deck, then count off exactly 16 cards into a pile. Put the rest of the deck away.",
+    title: "Gathering the Aces",
+    instruction: "Grab a deck of cards and take out the four aces and lay them on the table.",
+  },
+  {
+    title: "The Foundation",
+    instruction: "Shuffle the remaining deck, then count off exactly 16 cards into a pile. Put the rest of the deck away.",
   },
   {
     title: "The Inversion",
-    instruction: "Take your 4 Aces and lose them—face up—into the 16 face-down cards. You now have a small stack where the Aces are glowing face-up, while the others face the shadows.",
+    instruction: "Take your 4 Aces and lose them—face up—into the 16 face-down cards. You now have a small stack where the Aces are glowing face-up, while the others face the shadows, face down.",
   },
   {
     title: "Mixing the Chaos",
-    instruction: "Give the cards an overhand shuffle. Mix them thoroughly. The face-up and face-down cards are now becoming one. Entropy is taking hold.",
+    instruction: "Give the cards an overhand shuffle. Mix them thoroughly. The face-up and face-down cards are now becoming one. Chaos is taking hold.",
   },
   {
     title: "The Great Partition",
@@ -147,7 +151,7 @@ export const ChaosProtocol: React.FC = () => {
                 <span className="animate-pulse">Tap to Skip Voice</span>
               ) : (
                 <>
-                  {currentStep === 0 ? "Prepare the deck" : "The path is followed"}
+                  {currentStep === 0 ? "Completed" : "I have done that"}
                   <ChevronRight size={24} className="group-hover:translate-x-1 transition-transform" />
                 </>
               )}

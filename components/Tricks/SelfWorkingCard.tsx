@@ -6,7 +6,7 @@ import { speak } from '../../services/geminiService';
 const STEPS = [
   {
     title: "The Chaos Phase",
-    instruction: "Take your physical deck and shuffle it thoroughly. Let the spirits randomize the order. Then, count out exactly 9 cards and set the rest aside. We only need nine to bridge the worlds.",
+    instruction: "Grab a deck of cards and shuffle it thoroughly. Let the spirits randomize the order. Then, count out exactly 9 cards and set the rest aside. We only need nine to bridge the worlds.",
   },
   {
     title: "The Three Gates",
