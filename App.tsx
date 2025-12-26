@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { TrickType, Trick } from './types';
 import { HauntedGallery } from './components/Tricks/HauntedGallery';
 import { ArtifactRitual } from './components/Tricks/ArtifactRitual';
-import { ThoughtLock } from './components/Tricks/ThoughtLock';
 import { SelfWorkingCard } from './components/Tricks/SelfWorkingCard';
 import { ChaosProtocol } from './components/Tricks/ChaosProtocol';
 import { Sparkles, Brain, LayoutGrid, ScrollText, ArrowLeft, Lock, Zap } from 'lucide-react';
@@ -15,13 +14,6 @@ const TRICKS: Trick[] = [
     description: "Your movement is predicted by the ghosts of the grid.",
     icon: "LayoutGrid",
     category: "Digital"
-  },
-  {
-    id: TrickType.THOUGHT_LOCK,
-    title: "The Thought-Lock",
-    description: "A mental lock that only the oracle can open.",
-    icon: "Lock",
-    category: "Mentalism"
   },
   {
     id: TrickType.CHAOS_PROTOCOL,
@@ -53,7 +45,6 @@ const App: React.FC = () => {
     switch (activeTrick) {
       case TrickType.GALLERY: return <HauntedGallery />;
       case TrickType.ARTIFACTS: return <ArtifactRitual />;
-      case TrickType.THOUGHT_LOCK: return <ThoughtLock />;
       case TrickType.CARD_MASTER: return <SelfWorkingCard />;
       case TrickType.CHAOS_PROTOCOL: return <ChaosProtocol />;
       default: return null;
