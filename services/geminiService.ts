@@ -94,6 +94,6 @@ export const speak = (text: string): Promise<void> => {
       } else {
         window.speechSynthesis.resume();
       }
-    }, 9000);
+    }, 10000);
   });
 };

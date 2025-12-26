@@ -26,7 +26,7 @@ const STEPS = [
   },
   {
     title: "The Mirror Flip",
-    instruction: "Choose either pile. It does not matter which. Pick it up, turn the entire pile upside down, and place it back where it was.",
+    instruction: "Choose either pile. It does not matter which. Flip your chosen pile upside down, and place it back where it was.",
   },
   {
     title: "The Bridge of Shadows",
@@ -34,11 +34,11 @@ const STEPS = [
   },
   {
     title: "The Simple Sever",
-    instruction: "The universe demands it's cut. Cut any amount from the top, place it on the table, and complete the cut with the remaining cards. Order is moving under the surface.",
+    instruction: "The universe demands it's cut. Cut the stack where your intuition leads, then complete the cut. Even in chaos, a secret order is taking root.",
   },
   {
     title: "The Four Quartets",
-    instruction: "Deal the cards into 4 separate piles, one at a time, as if dealing a game of cards until all 20 cards are distributed. Each pile now holds 5 cards.",
+    instruction: "Deal the cards into 4 separate piles, one at a time, as if dealing a game of cards until all 20 cards are distributed evenly.",
   },
   {
     title: "The Binary Choice",
@@ -54,11 +54,11 @@ const STEPS = [
   },
   {
     title: "The Riffle of Entropy",
-    instruction: "To create total chaos, give the cards one final riffle shuffle on the table. Push them together into a neat pile. Place your hand on top of them to hold the moment.",
+    instruction: "To create total chaos, give the cards one final riffle shuffle on the table. Push them together into a neat pile. Place your hand on top of them to hold this moment in time.",
   },
   {
     title: "The Revelation",
-    instruction: "Close your eyes. Say 'Catawampus' and wave your hand. Spread the cards slowly across the table. Every card faces the shadows, except the four Aces, which alone face the light.",
+    instruction: "Close your eyes. Say 'Catawampus'. Spread the cards slowly across the table. Every card faces the shadows, except the four Aces, which alone face the light.",
   }
 ];
 
