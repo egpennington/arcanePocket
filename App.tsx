@@ -63,7 +63,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0a0c] text-gray-200 overflow-x-hidden">
+    <div className="min-h-screen bg-[#0a0a0c] text-gray-200 overflow-x-hidden flex flex-col">
       <div className="fixed top-0 left-0 w-full h-full pointer-events-none opacity-20 overflow-hidden">
         <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-indigo-900 rounded-full blur-[120px]"></div>
         <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-purple-900 rounded-full blur-[120px]"></div>
@@ -95,7 +95,7 @@ const App: React.FC = () => {
         )}
       </header>
 
-      <main className="relative z-10 max-w-5xl mx-auto px-6 pb-20">
+      <main className="relative z-10 max-w-5xl mx-auto px-6 pb-20 flex-grow w-full">
         {!activeTrick ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {TRICKS.map((trick) => (
@@ -124,6 +124,11 @@ const App: React.FC = () => {
           </div>
         )}
       </main>
+      <footer className="relative z-10 py-10 text-center border-t border-white/5 mx-6">
+        <p className="text-[10px] text-gray-600 tracking-[0.4em] uppercase font-bold">
+          &copy; {new Date().getFullYear()} <a href="https://emmettpennington.com" target="_blank" rel="noopener noreferrer" className="text-indigo-500/80 hover:text-indigo-400 transition-colors">penningtonProgramming</a> V1.0.0
+        </p>
+      </footer>
     </div>
   );
 };
