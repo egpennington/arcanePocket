@@ -14,7 +14,7 @@ const STEPS = [
   },
   {
     title: "The Inversion",
-    instruction: "Take your 4 Aces and lose them—face up—into the 16 face-down cards. You now have the glowing face-up, while the others face the shadows, face down.",
+    instruction: "Take your 4 Aces and lose them—face up—into the 16 face-down cards. The aces should be face-up toward the light, while the others face the shadows, face down.",
   },
   {
     title: "Mixing the Chaos",
@@ -30,7 +30,7 @@ const STEPS = [
   },
   {
     title: "The Bridge of Shadows",
-    instruction: "Now interlace the cards. Take the top card from either pile and place it in the center. Then take the top card from the other pile and place it on top of that. Alternate until all cards are in a single stack.",
+    instruction: "Now interlace the cards. Take the top card from either pile and place it in the center. Then take the top card from the other pile and place it on top of that. Alternate until all cards are in a single stack. Square them up.",
   },
   {
     title: "The Simple Sever",
@@ -46,7 +46,7 @@ const STEPS = [
   },
   {
     title: "The First Convergence",
-    instruction: "If you chose Odd, stack piles 1 and 3 together. If you chose Even, stack 2 and 4. Stack the remaining two piles and separately. Should have 2 piles of 10 cards each.",
+    instruction: "If you chose Odd, stack piles 1 and 3 together. If you chose Even, stack 2 and 4. Stack the other two piles on top of each other. You should have 2 piles of 10 cards each.",
   },
   {
     title: "The Final Inversion",
@@ -54,7 +54,7 @@ const STEPS = [
   },
   {
     title: "The Riffle of Entropy",
-    instruction: "To create total chaos, give the cards one final riffle shuffle on the table. Push them together into a neat pile. Put your hand on top of them.",
+    instruction: "To create total chaos, give the cards one final riffle shuffle on the table. Push them together into a neat pile. Place your hand on top of them to hold the moment.",
   },
   {
     title: "The Revelation",
